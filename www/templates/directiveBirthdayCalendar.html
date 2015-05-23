@@ -1,0 +1,13 @@
+<div class="col-xs-12 col-sm-6" ng-controller="BirthdayController">
+<h1>Birthdays</h1>
+<div style="width: 90%; position: relative; margin-left: 10%">
+<div style="margin: 0 auto; position: relative; width: 90%; max-width: 400px">
+<ul style="list-style-type: none; margin-left: 20%; padding: 0">
+<li ng-repeat="person in people | orderBy:birthdayDateWithoutYear">{{person.first}} <span ng-bind-html="person.last"></span> -
+<span ng-bind-html="birthdayFmt(person, 'MMM D')"></span></li>
+<!-- <li ng-repeat="person in people | orderBy:birthdayDate">{{person.first}} {{person.last}} - {{birthdayFmt(person, "MMM d")}}</li>
+-->
+</ul>
+</div>
+</div>
+</div>

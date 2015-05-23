@@ -1,0 +1,90 @@
+
+/* Empty. Add your own CSS if you like */
+
+
+@font-face {
+  font-family: 'Littledays';
+  src: url('Littledays.ttf')  format('truetype');
+}
+
+
+  #main_body {
+    font-family: verdana, arial, sans-serif; font-size: small;
+/* border: 10px solid
+#453900; */
+    overflow:hidden;
+    padding-bottom: 30vh;
+    margin-bottom: -30vh;
+background-image: url("../img/skulls.png");
+ }
+  td { font-family: verdana; font-size: small; }
+
+  h1 {
+text-align: center;
+font-family: Littledays, Trebuchent,
+Georgia, Times;
+  font-size: 4em;
+color: 594A02; }
+
+h1.title {
+padding-top: 15px;
+padding-bottom: 5px;
+}
+
+.banner {
+margin: 15px 0;
+padding: 15px 20px 5px;
+border-top: 1px solid #cdc;
+border-bottom: 1px solid #cdc;
+color: #474;
+}
+
+/* Override the bootstrap style */
+blockquote {
+    border-left: none;
+font-size: 1em;
+}
+div.panel-body hr {
+  border-top-color: #ccc;
+margin-bottom: 10px;
+}
+
+.address {
+/* height: 18em; */
+}
+
+img {
+border: 2px solid #59a;
+}
+img.h {
+ width: 100%;
+ max-width: 400px;
+}
+img.v {
+ width: 70%;
+ max-width: 300px;
+}
+#images {
+position: relative;
+margin: 20px auto;
+ text-align: center;
+}
+.imgwithcaption {
+/* width: 100%;
+position: relative;
+float: left;
+ text-align: center;
+*/
+}
+.caption {
+margin-top: 1em;
+margin-bottom: 2em;
+padding: .5em;
+}
+
+
+.panel {
+  margin-top: 10px;
+
+background-color: rgba(230,230,245,0.4);
+}

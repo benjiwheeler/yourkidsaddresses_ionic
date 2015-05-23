@@ -1,0 +1,8 @@
+<div class="banner bg-success" ng-show="anyToShow()">
+<b style="float: left;">Upcoming birthdays:</b>
+<ul class="list-inline" >
+<li ng-repeat="person in nPeopleByUpcomingBirthday(3)">{{person.first}} <span ng-bind-html="person.last"></span> -
+{{birthdayFmt(person, "MMM D")}}
+</li>
+</ul>
+</div>
