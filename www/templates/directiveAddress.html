@@ -1,10 +1,14 @@
      <div class="panel panel-default">
   <div class="panel-heading">{{person.first}} <span ng-bind-html="person.last"></span> (b. {{birthdayFmt(person, 'MMM D')}})<span ng-bind-html="spouseStr(person)"></span></div>
+
   <div class="panel-body">
-    <span ng-if="children = childrenOf(person)">
-      <p ng-repeat="child in children | orderBy:age:true">
-        <a href="#" ng-click="openExternalUrl(flickrURL(child))"); return false;">{{child.first}}</a> <span ng-bind-html="child.last"></span> (b. {{birthdayFmt(child, 'MMM D')}})</p>
-      <hr></span>
+    <span ng-if="childrenOf(person)">
+      <p ng-repeat="child in childrenOf(person) | orderBy:age:true">
+
+        <a href="#" ng-click="openExternalUrl(flickrURL(child))">{{child.first}}</a> <span ng-bind-html="child.last"></span> (b. {{birthdayFmt(child, 'MMM D')}})</p>
+      <hr>
+</span>
+
     <blockquote>{{person.phone}}<br>{{person.address.street1}}
       <span ng-if="person.address.street2"><br>{{person.address.street2}}></span>
       <br>{{person.address.city}}, {{person.address.state}} {{person.address.zip}}
@@ -12,4 +16,3 @@
     </blockquote>
   </div>
       </div>
-

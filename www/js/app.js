@@ -103,9 +103,10 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: "templates/other.html",
-        controller: function($scope, urlHandler) {
+        controller: ['$scope', 'urlHandler', function($scope, urlHandler) {
+          console.log("other controller running");
           $scope.openExternalUrl = urlHandler.openExternalUrl;
-        }
+        }]
       }
     }
   });
@@ -128,8 +129,10 @@ app.service('urlHandler', function() {
     // need this to be able to open links on ios without hijacking the phonegap view!
     // see https://blog.nraboy.com/2014/07/launch-external-urls-ionicframework/
     openExternalUrl: function(url) {
+      console.log("urlHandler: openExternalUrl: running");
+      $log.log("urlHandler: openExternalUrl: running");
       window.open(url, '_system', 'location=yes');
-      return false;
+      //return false;
     }
   }
 });

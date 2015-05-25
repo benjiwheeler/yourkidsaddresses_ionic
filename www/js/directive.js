@@ -37,5 +37,5 @@ app.directive('upcomingBirthdays', function(){
     controller: 'BirthdayController',
     templateUrl: 'templates/directiveBirthdayCalendar.html'
   };
-})
+});
 
