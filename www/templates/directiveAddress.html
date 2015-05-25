@@ -5,14 +5,14 @@
     <span ng-if="childrenOf(person)">
       <p ng-repeat="child in childrenOf(person) | orderBy:age:true">
 
-        <a href="#" ng-click="openExternalUrl(flickrURL(child))">{{child.first}}</a> <span ng-bind-html="child.last"></span> (b. {{birthdayFmt(child, 'MMM D')}})</p>
+        <a href="" ng-click="openExternalUrl(flickrURL(child))">{{child.first}}</a> <span ng-bind-html="child.last"></span> (b. {{birthdayFmt(child, 'MMM D')}})</p>
       <hr>
 </span>
 
     <blockquote>{{person.phone}}<br>{{person.address.street1}}
       <span ng-if="person.address.street2"><br>{{person.address.street2}}></span>
       <br>{{person.address.city}}, {{person.address.state}} {{person.address.zip}}
-      <br>[ <a href="#" ng-click="openExternalUrl(googleMapsURL(person))">Google map</a> ]
+      <br>[ <a href="" ng-click="openExternalUrl(googleMapsURL(person))">Google map</a> ]
     </blockquote>
   </div>
       </div>

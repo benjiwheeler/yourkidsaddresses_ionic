@@ -130,9 +130,9 @@ app.service('urlHandler', function() {
     // see https://blog.nraboy.com/2014/07/launch-external-urls-ionicframework/
     openExternalUrl: function(url) {
       console.log("urlHandler: openExternalUrl: running");
-      $log.log("urlHandler: openExternalUrl: running");
+      //$log.log("urlHandler: openExternalUrl: running");
       window.open(url, '_system', 'location=yes');
-      //return false;
+      return false;
     }
   }
 });

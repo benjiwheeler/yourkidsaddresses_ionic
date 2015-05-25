@@ -106,11 +106,11 @@ angular.module('starter.controllers', [])
     }
     $scope.spouseStr = spouseStr;
 
-    console.log("AddressController: clearing scope.children");
+    //console.log("AddressController: clearing scope.children");
     $scope.children = {};
 
     function findChildren(person) {
-      console.log("finding children for person " + person.id);
+      //console.log("finding children for person " + person.id);
       var children = _.filter($scope.people, function(candidate) {
         return candidate.hasOwnProperty('child_of') && candidate.child_of === person.id;
       });
@@ -118,20 +118,20 @@ angular.module('starter.controllers', [])
       return children;
     }
     $scope.childrenOf = function(person) {
-      console.log("childrenOf: trying to find children of " + person.id);
+      //console.log("childrenOf: trying to find children of " + person.id);
       if ($scope.children.hasOwnProperty(person.id)) {
-        console.log("childrenOf: already know children for person " + person.id + "; there are " + $scope.children[person.id].length + " of them");
+        //console.log("childrenOf: already know children for person " + person.id + "; there are " + $scope.children[person.id].length + " of them");
         return $scope.children[person.id];
       } else {
-        console.log("childrenOf: DON'T already know children for person " + person.id);
+        //console.log("childrenOf: DON'T already know children for person " + person.id);
         return findChildren(person);
       }
     };
 
-    $scope.openExternalUrl = urlHandler.openExternalUrl;
-    $scope.doAlert = function(str) {
-      alert("running doalerta fn: " + str);
-      return false;
+//    $scope.openExternalUrl = urlHandler.openExternalUrl;
+    $scope.openExternalUrl = function(url) {
+      console.log("opening external url in address controller");
+      urlHandler.openExternalUrl(url);
     };
   }
 ]);

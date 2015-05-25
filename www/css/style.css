@@ -7,16 +7,50 @@
   src: url('Littledays.ttf')  format('truetype');
 }
 
+.menu-content .bar-header {
+background-color: rgba(255, 255, 255, 0.7);
+}
 
+.menu .bar-header {
+  background-color: #520052;
+}
+
+.menu .scroll-content {
+  background-color: #520052;
+
+}
+
+.menu-content .scroll-content {
+  background-image: url("../img/skulls.png");
+  margin-top: -50px;
+  padding-top: 80px;
+
+}
+
+.menu .item {
+/*
+border: none;
+*/
+color: #eee;
+font-weight: 800;
+  }
+
+.menu .item-content {
+  background-color: #520052;
+  }
   #main_body {
     font-family: verdana, arial, sans-serif; font-size: small;
+
+
 /* border: 10px solid
 #453900; */
     overflow:hidden;
 /*    padding-bottom: 30vh;
     margin-bottom: -30vh;
 */
+/*
 background-image: url("../img/skulls.png");
+*/
 min-height: 100vh;
  }
   td { font-family: verdana; font-size: small; }
