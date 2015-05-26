@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
 
     $scope.goToAddress = function(person) {
       $state.go('app.address', {personId: person.id});
-    }
+    };
   }
 ])
 
@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
     function googleMapsURL(person) {
       var url = "#";
       if (enoughAddressInfoForGoogle(person)) {
-        var street2Str = person.address['street2'] ? person.address['street2'] : "";
+        var street2Str = person.address.street2 ? person.address.street2 : "";
         var addressStr = encodeURIComponent(person.address.street1 + " " + person.address.city + " " + person.address.state + " " + person.address.zip);
         url = "http://maps.google.com/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q=" + addressStr + "&ie=UTF8&z=16&iwloc=addr&om=1";
       }

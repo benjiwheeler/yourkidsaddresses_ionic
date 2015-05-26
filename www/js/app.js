@@ -19,10 +19,6 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
       StatusBar.styleDefault();
     }
 
-$timeout(function() {
-  alert("going to main");
-    $state.go('app.main');
-}, 5000);
 
   });
 
@@ -56,10 +52,12 @@ $timeout(function() {
 
   .state('app.main', {
     url: "/main",
-    controller: ['$scope', function($scope) {}],
     views: {
       'menuContent': {
-        templateUrl: "templates/main.html"
+        templateUrl: "templates/main.html",
+        controller: ['$scope', function($scope) {
+          console.log("main controller");
+        }],
       }
     }
   })
@@ -96,7 +94,7 @@ $timeout(function() {
           console.log("app.address:controller: person is:");
           console.log(person);
           $scope.person = person;
-        }
+        }]
       }
     }
   })
@@ -146,5 +144,5 @@ app.service('urlHandler', function() {
       window.open(url, '_system', 'location=yes');
       return false;
     }
-  }
+  };
 });
