@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'starter.controllers'])
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
 .run(['$ionicPlatform', '$rootScope', '$timeout', '$state',
   function($ionicPlatform, $rootScope, $timeout, $state) {
@@ -18,7 +18,6 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
 
   });
 
@@ -37,6 +36,7 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
           var promise = peopleService.getPeople().then(function(peopleResult) {
             console.log("app/resolve: peopleResult is:");
             console.log(peopleResult);
+            //$cordovaSplashscreen.hide();
             return peopleResult;
           });
           return promise;
@@ -55,8 +55,20 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: "templates/main.html",
-        controller: ['$scope', function($scope) {
+        controller: ['$scope', '$timeout', function($scope, $timeout) {
           console.log("main controller");
+          $scope.$on('$ionicView.loaded', function() {
+            ionic.Platform.ready( function() {
+              //alert('ready to hide splash');
+              $timeout(function() {
+                //console.log("hiding after 1s");
+                if(navigator && navigator.splashscreen) {
+                  //alert('hiding');
+                  navigator.splashscreen.hide();
+                }
+              }, 500);
+            });
+          });
         }],
       }
     }
