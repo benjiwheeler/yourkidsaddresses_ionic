@@ -6,7 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform, $rootScope) {
+.run(['$ionicPlatform', '$rootScope', '$timeout', '$state',
+  function($ionicPlatform, $rootScope, $timeout, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,36 +18,45 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+$timeout(function() {
+  alert("going to main");
+    $state.go('app.main');
+}, 5000);
+
   });
 
-})
+}])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app', {
       url: "/app",
       abstract: true,
       templateUrl: "templates/menu.html",
       resolve: {
-        people: function($stateParams, $rootScope, peopleService) {
+        people: ['$stateParams', '$rootScope', 'peopleService',
+        function($stateParams, $rootScope, peopleService) {
           var promise = peopleService.getPeople().then(function(peopleResult) {
             console.log("app/resolve: peopleResult is:");
             console.log(peopleResult);
             return peopleResult;
           });
           return promise;
-        }
+        }]
       },
-      controller: function($scope, people) {
+      controller: ['$scope', 'people',
+      function($scope, people) {
         console.log("app:controller: people is:");
         console.log(people);
         $scope.people = people;
-      }
+      }]
     })
 
   .state('app.main', {
     url: "/main",
-    controller: function($scope) {},
+    controller: ['$scope', function($scope) {}],
     views: {
       'menuContent': {
         templateUrl: "templates/main.html"
@@ -66,7 +76,8 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
   .state('app.address', {
     url: "/address/:personId",
     resolve: {
-      person: function($stateParams, peopleService) {
+      person: ['$stateParams', 'peopleService',
+      function($stateParams, peopleService) {
         var promise = peopleService.getPeople().then(function(peopleResult) {
           return _.find(peopleResult, function(candidate) {
             var result = candidate.hasOwnProperty('id') && candidate.id === $stateParams.personId;
@@ -75,12 +86,13 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
           });
         });
         return promise;
-      }
+      }]
     },
     views: {
       'menuContent': {
         templateUrl: "templates/address.html",
-        controller: function($scope, person) {
+        controller: ['$scope', 'person',
+        function($scope, person) {
           console.log("app.address:controller: person is:");
           console.log(person);
           $scope.person = person;
@@ -113,7 +125,7 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/main');
-});
+}]);
 
 app.filter('isAddressOwner', function() {
   return function(people) {
